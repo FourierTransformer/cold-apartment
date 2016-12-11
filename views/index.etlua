@@ -1,0 +1,45 @@
+<h1 id="temp"></h1>
+<p id="message"></p>
+<script>
+    // convert a temperature into a message. I may get fancy here one day.
+    function getMessage(temp) {
+        if (temp < 68) {
+            return "It's too cold in my apartment by law."
+        } else {
+            return "It's legally compliant in my apartment!"
+        }
+    }
+
+    // DO MY GET REQUESTS. This is totally stolen from an mdn page.
+    function httpGet() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/api/v1/status", true);
+        xhr.onload = function (e) {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              var t = JSON.parse(xhr.responseText);
+              var f = Math.round(t['temperature'].temp/5*9+32);
+              
+              // update the actual temp
+              document.getElementById('temp').innerHTML = 'Current Temp: ' + f + '°F';
+
+              // print a message to tell the world if we're compliant
+              document.getElementById('message').innerHTML = getMessage(f);
+            } else {
+              console.error(xhr.statusText);
+            }
+          }
+        };
+        xhr.onerror = function (e) {
+          console.error(xhr.statusText);
+        };
+        xhr.send(null);
+    }
+
+    // do the initial load
+    httpGet()
+
+    // hit the api every 5s or so. This is the minimum time from when my temp
+    // sensor to go off. Perhaps it should be increased? eh - we shall see.
+    setInterval(httpGet, (5 * 1000));
+</script>

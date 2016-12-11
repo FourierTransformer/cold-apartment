@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<html>
+<head>
+    <title>I think my apartment is too cold</title>
+    <!-- INLINE CSS FTW! -->
+    <style type="text/css">
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        h1 {
+            font-size: 5em;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            text-align: center;
+        }
+        p {
+            margin-top: 0;
+            font-size: 2.5em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <% content_for("inner") %>
+</body>
+</html>

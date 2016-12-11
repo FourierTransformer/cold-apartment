@@ -1,0 +1,6 @@
+config.lua
+logs/
+*_temp/
+nginx.conf.compiled
+.DS_Store
+*.log

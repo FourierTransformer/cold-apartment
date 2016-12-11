@@ -1,0 +1,19 @@
+local config = require('lapis.config')
+
+config({"development", "production"}, {
+    my_secret = 'my super sweet secret'
+})
+
+config("development", {
+    server_name = 'localhost',
+    num_workers = 4,
+    port = 8080
+})
+
+config("production", {
+  num_workers = 1,
+  port = 80,
+  code_cache = "on",
+  server_name = "ismyapartmentcold.com",
+  error_log_location = "logs/error.log warn",
+})
