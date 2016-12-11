@@ -19,4 +19,7 @@ COPY views /app/views
 COPY mime.types /app/
 COPY nginx.conf /app/
 
+# just to help automate creating this for prod
+RUN mkdir /ssl
+
 ENTRYPOINT ["/usr/local/openresty/luajit/bin/lapis", "server"]
