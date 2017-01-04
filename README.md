@@ -37,4 +37,4 @@ I have a [Bean+](https://punchthrough.com/bean) that talks to a [Raspberry Pi 3]
 
 4. Run the production docker image
 
-    `docker run -d -p 80:80 -p 443:443 -v /etc/letsencrypt/live/ismyapartmentcold.com:/ssl --restart=unless-stopped cold-apartment production` (assuming you're running in prod).
+    `docker run -d -p 80:80 -p 443:443 -v /etc/letsencrypt:/etc/letsencrypt --restart=unless-stopped cold-apartment production` (assuming you're running in prod).
