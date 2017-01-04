@@ -18,10 +18,11 @@
           if (xhr.readyState === 4) {
             if (xhr.status === 200) {
               var t = JSON.parse(xhr.responseText);
-              var f = Math.round(t['temperature'].temp/5*9+32);
-              
+              // basic conversion, there's a *10 in there so we can get pseudo precision
+              var f = Math.round((t['temperature'].temp/5*9+32)*10);
+              f = f / 10;
               // update the actual temp
-              document.getElementById('temp').innerHTML = 'Current Temp: ' + f + '°F';
+              document.getElementById('temp').innerHTML = 'Living Room: ' + f + '°F';
 
               // print a message to tell the world if we're compliant
               document.getElementById('message').innerHTML = getMessage(f);
@@ -39,7 +40,6 @@
     // do the initial load
     httpGet()
 
-    // hit the api every 5s or so. This is the minimum time from when my temp
-    // sensor to go off. Perhaps it should be increased? eh - we shall see.
-    setInterval(httpGet, (5 * 1000));
+    // hit the api every 10s or so. This feels about right.
+    setInterval(httpGet, (10 * 1000));
 </script>
