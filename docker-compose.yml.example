@@ -1,0 +1,15 @@
+
+version: '2'
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    command: production
+    ports:
+      - 443:443
+      - 80:80
+
+    volumes:
+      # let's encrypt
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /home/shakil/config.lua:/app/config.lua

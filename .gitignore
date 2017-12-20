@@ -1,4 +1,5 @@
 config.lua
+docker-compose.yml
 logs/
 *_temp/
 nginx.conf.compiled

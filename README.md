@@ -18,23 +18,24 @@ I have a [Bean+](https://punchthrough.com/bean) that talks to a [Raspberry Pi 3]
 
 
 ## Setting up the Webapp
-0. Clone this repo
+1. Clone this repo
 
     `git clone https://github.com/FourierTransformer/cold-apartment.git`
 
 
 1. Make a copy the config file
 
-    `cp config.lua.example config.lua`
+    `cp config.lua.example ../config.lua`
 
 
-2. Change `my_secret` in config.lua into something secret that only you and your Raspberry Pi know
+1. Change `my_secret` in config.lua into something secret that only you and your Raspberry Pi know
 
-3. Build the docker image (i may offer a pre-built version one day)
-    
-    `docker build -t cold-apartment .`
+1. Make a copy of the docker-compose file
 
+   `cp docker-compose.yml.config docker-compose.yml`
 
-4. Run the production docker image
+1. Modify the location of config.lua to point at your config.lua (in the volumes section)
 
-    `docker run -d -p 80:80 -p 443:443 -v /etc/letsencrypt:/etc/letsencrypt --restart=unless-stopped cold-apartment production` (assuming you're running in prod).
+1. Run the production docker image
+    `docker-compose up -d`
+
